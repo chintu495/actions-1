@@ -2,7 +2,7 @@ name: Matrix Config
 
 on: 
     push: 
-    workflow_run: 
+    workflow_dispatch:  
     
 jobs:
     deploy-on-ubuntu:
