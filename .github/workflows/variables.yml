@@ -1,6 +1,7 @@
 name: Exploring Vars and Secrets
 
 on: 
+  push: 
   workflow_dispatch: 
     # schedule:
     #   - cron: "*/1 * * * *"
@@ -21,6 +22,7 @@ jobs:
               run: echo docker push $CONTAINER_REGISTRY/${{vars.DOCKER_USERNAME}}/$IMAGE_NAME:latest
 
     deploy:
+        if: github.ref == 'refs/heads/main'
         needs: docker
         concurrency: 
           group: prod_deployment
